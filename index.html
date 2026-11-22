@@ -1,0 +1,314 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyMate | AI Learning Workspace</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="app-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="brand">
+            <span class="brand-icon">✦</span>
+            <div>
+                <h2>StudyMate</h2>
+                <small>AI Learning Platform</small>
+            </div>
+        </div>
+
+        <p class="nav-label">WORKSPACE</p>
+
+        <nav>
+            <a href="#dashboard" class="nav-item active">▦ Dashboard</a>
+            <a href="#assessment" class="nav-item">◈ Study Assessment</a>
+            <a href="#planner" class="nav-item">▤ Study Planner</a>
+            <a href="#analytics" class="nav-item">◷ Analytics</a>
+            <a href="#assistant" class="nav-item">✧ AI Assistant</a>
+            <a href="#alarms" class="nav-item">◉ Focus Alarms</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="upgrade-card">
+                <span>✦</span>
+                <h3>Keep Growing!</h3>
+                <p>Small progress every day creates big results.</p>
+            </div>
+            <p class="profile">👤 Student Workspace</p>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <header class="topbar">
+            <div>
+                <p class="welcome-text">YOUR PERSONAL LEARNING SPACE</p>
+                <h1>Good morning, Student 👋</h1>
+                <p>Plan smarter. Focus better. Achieve more.</p>
+            </div>
+
+            <div class="top-actions">
+                <span class="status">● Learning mode</span>
+                <button onclick="toggleQA()">✧ Ask AI</button>
+            </div>
+        </header>
+
+        <!-- DASHBOARD -->
+        <section id="dashboard" class="section dashboard-section">
+            <div class="section-heading">
+                <div>
+                    <h2>Learning Overview</h2>
+                    <p>Track your learning journey in one place.</p>
+                </div>
+                <span class="date-label" id="current-date"></span>
+            </div>
+
+            <div class="stats-grid">
+                <article class="stat-card">
+                    <span>📚</span>
+                    <p>Daily Study Goal</p>
+                    <h2 id="daily-goal">2 Hours</h2>
+                    <small>Stay consistent</small>
+                </article>
+
+                <article class="stat-card">
+                    <span>⏱️</span>
+                    <p>Study Sessions</p>
+                    <h2 id="session-count">0</h2>
+                    <small>Sessions completed</small>
+                </article>
+
+                <article class="stat-card">
+                    <span>🔥</span>
+                    <p>Study Streak</p>
+                    <h2 id="study-streak">0 Days</h2>
+                    <small>Keep your momentum</small>
+                </article>
+
+                <article class="stat-card">
+                    <span>🎯</span>
+                    <p>Study Level</p>
+                    <h2 id="dashboard-level">Beginner</h2>
+                    <small>Your learning journey</small>
+                </article>
+            </div>
+        </section>
+
+        <!-- ASSESSMENT -->
+        <section id="assessment" class="section">
+            <div class="section-heading">
+                <div>
+                    <h2>Study Assessment</h2>
+                    <p>Understand your current learning habits.</p>
+                </div>
+                <span class="step-tag">STEP 01</span>
+            </div>
+
+            <div class="content-card">
+                <form id="level-form">
+                    <div class="form-grid">
+
+                        <label>
+                            Daily study hours
+                            <input type="number" id="study-hours"
+                                   min="0" max="24" value="2">
+                        </label>
+
+                        <label>
+                            Weekly play / exercise hours
+                            <input type="number" id="play-time"
+                                   min="0" max="168" value="10">
+                        </label>
+
+                        <label>
+                            Preferred study start time
+                            <select id="start-time">
+                                <option value="09:00">9:00 AM</option>
+                                <option value="10:00">10:00 AM</option>
+                                <option value="14:00">2:00 PM</option>
+                            </select>
+                        </label>
+
+                        <label>
+                            Break frequency
+                            <input type="range" id="breaks"
+                                   min="1" max="5" value="3">
+                        </label>
+
+                    </div>
+
+                    <button type="button" onclick="assessLevel()">
+                        Analyze My Study Habits →
+                    </button>
+                </form>
+
+                <div id="level-result"></div>
+
+                <div class="chart-box" id="level-pie">
+                    <canvas id="levelPieChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- PLANNER -->
+        <section id="planner" class="section" id="schedule-section">
+            <div class="section-heading">
+                <div>
+                    <h2>Personalized Study Plan</h2>
+                    <p>Your recommended daily learning schedule.</p>
+                </div>
+                <span class="step-tag">STEP 02</span>
+            </div>
+
+            <div class="content-card">
+                <div id="schedule" class="schedule">
+                    <p>Complete your study assessment to generate a schedule.</p>
+                </div>
+
+                <div class="divider"></div>
+
+                <h3>Log Your Daily Activity</h3>
+
+                <div class="form-grid">
+                    <label>Study hours
+                        <input type="number" id="log-study" min="0" value="0">
+                    </label>
+
+                    <label>Rest hours
+                        <input type="number" id="log-rest" min="0" value="0">
+                    </label>
+
+                    <label>Play hours
+                        <input type="number" id="log-play" min="0" value="0">
+                    </label>
+                </div>
+
+                <button onclick="logData()">Save Daily Progress</button>
+            </div>
+        </section>
+
+        <!-- ANALYTICS -->
+        <section id="analytics" class="section">
+            <div class="section-heading">
+                <div>
+                    <h2>Learning Analytics</h2>
+                    <p>Understand your study and productivity trends.</p>
+                </div>
+                <span class="step-tag">STEP 03</span>
+            </div>
+
+            <div class="content-card">
+                <div class="chart-header">
+                    <h3>Study Progress Report</h3>
+                    <button onclick="generateChart()">Refresh ↻</button>
+                </div>
+
+                <div class="chart-box">
+                    <canvas id="studyChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI ASSISTANT -->
+        <section id="assistant" class="section">
+            <div class="section-heading">
+                <div>
+                    <h2>AI Study Assistant</h2>
+                    <p>Ask questions and get help with your learning.</p>
+                </div>
+                <span class="ai-badge">✦ AI POWERED</span>
+            </div>
+
+            <div class="content-card assistant-card">
+                <div class="assistant-header">
+                    <div class="bot-avatar">🤖</div>
+                    <div>
+                        <h3>StudyMate AI</h3>
+                        <small>Ready to help you learn</small>
+                    </div>
+                </div>
+
+                <div id="chat-container" class="chat-container">
+                    <div class="message ai-msg">
+                        Hello! 👋 I'm your study assistant.
+                        What would you like to learn today?
+                    </div>
+                </div>
+
+                <div class="input-area">
+                    <input type="text" id="chat-input"
+                           placeholder="Ask a question..."
+                           onkeypress="if(event.key==='Enter') sendMessage()">
+
+                    <button id="send-btn" onclick="sendMessage()">
+                        Send ↑
+                    </button>
+                </div>
+
+                <small class="privacy-note">
+                    Your chat history is stored locally in your browser.
+                </small>
+            </div>
+        </section>
+
+        <!-- ALARMS -->
+        <section id="alarms" class="section">
+            <div class="section-heading">
+                <div>
+                    <h2>Focus & Study Alarms</h2>
+                    <p>Organize your sessions and manage your time.</p>
+                </div>
+                <span class="step-tag">STEP 04</span>
+            </div>
+
+            <div class="content-card">
+                <div class="form-grid">
+                    <label>Session type
+                        <select id="session-type">
+                            <option>Study</option>
+                            <option>Play</option>
+                            <option>Rest</option>
+                        </select>
+                    </label>
+
+                    <label>Start time
+                        <input type="time" id="alarm-time">
+                    </label>
+
+                    <label>Duration (minutes)
+                        <input type="number" id="duration"
+                               min="1" value="60">
+                    </label>
+                </div>
+
+                <button onclick="setAlarm()">+ Create Alarm</button>
+
+                <h3>Active Alarms</h3>
+                <div id="active-alarms"></div>
+                <div id="countdown"></div>
+            </div>
+        </section>
+
+        <footer>
+            <p>StudyMate © 2026 · Built for smarter learning.</p>
+        </footer>
+
+    </main>
+</div>
+
+<!-- KEEP YOUR ORIGINAL JAVASCRIPT HERE.
+     Paste the existing functions from your old HTML script.
+-->
+
+</body>
+</html>
