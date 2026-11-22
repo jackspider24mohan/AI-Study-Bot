@@ -1,0 +1,123 @@
+body { 
+    font-family: Arial, sans-serif; 
+    margin: 0; 
+    padding: 20px; 
+    background-color: #f4f4f9; 
+    color: #333; 
+}
+.container { 
+    max-width: 800px; 
+    margin: 0 auto; 
+    background: white; 
+    padding: 20px; 
+    border-radius: 10px; 
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+}
+h1 { 
+    text-align: center; 
+    color: #4a90e2; 
+}
+.section { 
+    margin: 20px 0; 
+    padding: 15px; 
+    border: 1px solid #ddd; 
+    border-radius: 5px; 
+}
+button { 
+    background: #4a90e2; 
+    color: white; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    margin: 5px; 
+}
+button:hover { 
+    background: #357abd; 
+}
+input, select { 
+    padding: 8px; 
+    margin: 5px; 
+    border: 1px solid #ccc; 
+    border-radius: 3px; 
+}
+#chart-container, #level-pie { 
+    height: 300px; 
+    margin: 20px 0; 
+}
+#qa-section, #alarm-section { 
+    display: none; 
+}
+.schedule { 
+    background: #e8f4fd; 
+    padding: 10px; 
+    border-radius: 5px; 
+}
+.data-log { 
+    font-size: 0.9em; 
+    color: #666; 
+}
+.alarm-item { 
+    background: #f9f9f9; 
+    padding: 10px; 
+    margin: 10px 0; 
+    border-radius: 5px; 
+}
+#countdown { 
+    font-size: 1.2em; 
+    color: #e74c3c; 
+    font-weight: bold; 
+}
+/* Chat Styles */
+#chat-container { 
+    height: 300px; 
+    border: 1px solid #ddd; 
+    overflow-y: scroll; 
+    padding: 10px; 
+    background: #f9f9f9; 
+    border-radius: 5px; 
+    margin: 10px 0; 
+}
+.message { 
+    margin: 10px 0; 
+    padding: 8px; 
+    border-radius: 5px; 
+    max-width: 80%; 
+}
+.user-msg { 
+    background: #4a90e2; 
+    color: white; 
+    text-align: right; 
+    margin-left: auto; 
+}
+.ai-msg { 
+    background: #e8f4fd; 
+    color: #333; 
+    margin-right: auto; 
+}
+.thinking { 
+    background: #f0f0f0; 
+    color: #666; 
+    font-style: italic; 
+}
+.input-area { 
+    display: flex; 
+}
+#chat-input { 
+    flex: 1; 
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    margin-right: 10px; 
+}
+#send-btn { 
+    background: #4a90e2; 
+    color: white; 
+    border: none; 
+    padding: 10px 20px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+}
+#send-btn:hover { 
+    background: #357abd; 
+}
